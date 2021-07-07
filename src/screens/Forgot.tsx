@@ -1,13 +1,13 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-interface SettingsProps {}
+interface ForgotProps {}
 
-const Settings: React.FC<SettingsProps> = ({}) => {
+const Forgot: React.FC<ForgotProps> = ({}) => {
   return (
     <View>
       <Text>I am sign up screen</Text>
     </View>
   );
 };
-export default Settings;
+export default Forgot;
