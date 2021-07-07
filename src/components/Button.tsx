@@ -2,13 +2,20 @@ import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import { getColor, tailwind } from "../tailwind";
+import { Style } from "../types";
 
 interface ButtonProps {
   width?: string | number;
   gradient?: boolean;
+  extraStyle: Style;
 }
 
-const Button: React.FC<ButtonProps> = ({ gradient, width, children }) => {
+const Button: React.FC<ButtonProps> = ({
+  gradient,
+  width,
+  extraStyle,
+  children,
+}) => {
   const classNames = {
     width: { width: width || "75%" },
     general: "p-2 rounded-5 flex-row justify-center",
@@ -16,7 +23,7 @@ const Button: React.FC<ButtonProps> = ({ gradient, width, children }) => {
 
   if (gradient) {
     return (
-      <TouchableOpacity style={classNames.width}>
+      <TouchableOpacity style={[classNames.width, extraStyle]}>
         <LinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
@@ -31,7 +38,11 @@ const Button: React.FC<ButtonProps> = ({ gradient, width, children }) => {
   }
   return (
     <TouchableOpacity
-      style={[classNames.width, tailwind(`bg-primary ${classNames.general}`)]}
+      style={[
+        classNames.width,
+        tailwind(`bg-primary ${classNames.general}`),
+        extraStyle,
+      ]}
     >
       {children}
     </TouchableOpacity>

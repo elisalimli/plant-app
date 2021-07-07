@@ -14,7 +14,7 @@ const Welcome: React.FC = ({}) => {
       </Typography>
       <View style={tailwind("flex-row justify-center")}>
         <Button gradient>
-          <Typography size="3xl">Login</Typography>
+          <Typography color="white">Login</Typography>
         </Button>
       </View>
     </View>

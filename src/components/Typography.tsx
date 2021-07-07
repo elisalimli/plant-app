@@ -37,12 +37,9 @@ const colorClassNames = {
   gray2: "text-gray2",
 };
 
-interface FontWeightProps {
+interface TypographyProps {
   fontWeight?: keyof typeof fontWeightClassNames;
-}
-
-interface TypographyProps extends FontWeightProps {
-  size: keyof typeof sizeClassNames;
+  size?: keyof typeof sizeClassNames;
   color?: keyof typeof colorClassNames;
   // centered?: boolean;
   // extraClassName?: string;
