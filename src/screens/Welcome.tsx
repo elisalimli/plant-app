@@ -1,15 +1,20 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import Button from "../components/Button";
+import Typography from "../components/Typography";
 import { tailwind } from "../tailwind";
+
+// - [ ] Text Component
 
 const Welcome: React.FC = ({}) => {
   return (
     <View>
-      <Text style={tailwind("text-2xl")}>hahah</Text>
+      <Typography size="6xl" color="accent" fontWeight="bold">
+        hahah
+      </Typography>
       <View style={tailwind("flex-row justify-center")}>
         <Button gradient>
-          <Text style={tailwind("text-white text-lg font-bold")}>Login</Text>
+          <Typography size="3xl">Login</Typography>
         </Button>
       </View>
     </View>
