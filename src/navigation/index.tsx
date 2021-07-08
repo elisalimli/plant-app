@@ -1,19 +1,17 @@
-import React from "react";
-import { Image } from "react-native";
-
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { IndexParamList } from "../types/IndexParamList";
+import React from "react";
 import {
   Browse,
   Explore,
+  Forgot,
   Login,
   Product,
-  Welcome,
   Settings,
   Signup,
-  Forgot,
+  Welcome,
 } from "../screens";
+import { IndexParamList } from "../types/IndexParamList";
 
 const Stack = createStackNavigator<IndexParamList>();
 

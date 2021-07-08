@@ -1,51 +1,87 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
+import { StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native";
-import { getColor, tailwind } from "../tailwind";
+import { theme } from "../../theme";
 import { Style } from "../types";
+
+type ButtonTypes = {
+  gradient?: boolean;
+  shadow?: boolean;
+  primary?: boolean;
+};
 
 interface ButtonProps {
   width?: string | number;
-  gradient?: boolean;
-  extraStyle: Style;
+  type?: keyof ButtonTypes;
+  extraStyle?: Style;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  gradient,
+  type,
   width,
-  extraStyle,
+  extraStyle = {},
   children,
 }) => {
-  const classNames = {
-    width: { width: width || "75%" },
-    general: "p-2 rounded-5 flex-row justify-center",
-  };
+  const buttonStyles = [
+    { width: width || "75%" },
+    extraStyle,
+    type === "primary" && styles.primary,
+    type === "shadow" && styles.shadow,
+  ];
 
-  if (gradient) {
+  if (type === "gradient") {
     return (
-      <TouchableOpacity style={[classNames.width, extraStyle]}>
+      <TouchableOpacity style={buttonStyles}>
         <LinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           locations={[0.1, 0.9]}
-          colors={[getColor("primary"), getColor("secondary")]}
-          style={[{ width: "100%" }, tailwind(classNames.general)]}
+          colors={[theme.colors.primary, theme.colors.secondary]}
+          style={[{ width: "100%" }, styles.general]}
         >
           {children}
         </LinearGradient>
       </TouchableOpacity>
     );
   }
+
   return (
-    <TouchableOpacity
-      style={[
-        classNames.width,
-        tailwind(`bg-primary ${classNames.general}`),
-        extraStyle,
-      ]}
-    >
+    <TouchableOpacity style={[buttonStyles, styles.general]}>
       {children}
     </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create({
+  general: {
+    paddingHorizontal: theme.spacing[2],
+    paddingVertical: theme.spacing[3],
+    borderRadius: theme.borderRadius[5],
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  primary: {
+    backgroundColor: theme.colors.primary,
+  },
+  shadow: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.0,
+
+    elevation: 0.45,
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 3,
+    // },
+    // shadowOpacity: 0.27,
+    // shadowRadius: 4.65,
+  },
+});
+
 export default Button;

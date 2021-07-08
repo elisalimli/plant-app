@@ -1,8 +1,8 @@
 import React from "react";
 import { View } from "react-native";
-import { StyleSheet } from "react-native";
-import Navigation from "./src/navigation";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Navigation from "./src/navigation";
+import { theme } from "./theme";
 
 // import all used images
 // const images = [
@@ -54,19 +54,13 @@ const App = () => {
   // }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
+    <SafeAreaView style={{ flex: theme.flex[1] }}>
+      <View style={{ flex: theme.flex[1] }}>
         <Navigation />
         {/* <StatusBar style="auto" /> */}
       </View>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;

@@ -1,48 +1,15 @@
 import React from "react";
-import { Text } from "react-native";
-import { tailwind } from "../tailwind";
+import { StyleProp, Text, TextStyle } from "react-native";
+import { theme } from "../../theme";
 
-const sizeClassNames = {
-  tiny: "text-tiny",
-  xs: "text-xs",
-  sm: "text-sm",
-  base: "text-base",
-  lg: "text-lg",
-  xl: "text-xl",
-  "2xl": "text-2xl",
-  "3xl": "text-3xl",
-  "4xl": "text-4xl",
-  "5xl": "text-5xl",
-  "6xl": "text-6xl",
-  "7xl": "text-7xl",
-};
-
-const fontWeightClassNames = {
-  extraLight: "font-extralight",
-  light: "font-light",
-  normal: "font-normal",
-  medium: "font-medium",
-  semibold: "font-semibold",
-  bold: "font-bold",
-};
-
-const colorClassNames = {
-  white: "text-white",
-  black: "text-black",
-  primary: "text-primary",
-  secondary: "text-secondary",
-  accent: "text-accent",
-  tertiary: "text-tertiary",
-  gray: "text-gray",
-  gray2: "text-gray2",
-};
+type FontWeightProps = keyof typeof theme.fontWeight;
 
 interface TypographyProps {
-  fontWeight?: keyof typeof fontWeightClassNames;
-  size?: keyof typeof sizeClassNames;
-  color?: keyof typeof colorClassNames;
+  fontWeight?: FontWeightProps;
+  size?: keyof typeof theme.fontSize;
+  color?: keyof typeof theme.colors;
   // centered?: boolean;
-  // extraClassName?: string;
+  extraStyle?: StyleProp<TextStyle>;
 }
 
 const Typography: React.FC<TypographyProps> = ({
@@ -50,12 +17,19 @@ const Typography: React.FC<TypographyProps> = ({
   size = "base",
   fontWeight = "normal",
   color = "black",
+  extraStyle = {},
 }) => {
+  // `${colorClassNames[color]} ${sizeClassNames[size]} ${fontWeightClassNames[fontWeight]} ${extraStyle}`
   return (
     <Text
-      style={tailwind(
-        `${colorClassNames[color]} ${sizeClassNames[size]} ${fontWeightClassNames[fontWeight]}`
-      )}
+      style={[
+        {
+          color: theme.colors[color],
+          fontSize: theme.fontSize[size],
+          fontWeight: theme.fontWeight[fontWeight] as any,
+        },
+        extraStyle,
+      ]}
     >
       {children}
     </Text>
