@@ -20,7 +20,7 @@ export const theme = {
     lg: 18,
     xl: 20,
     "2xl": 24,
-    "3xl": 30,
+    "3xl": 26,
     "4xl": 36,
     "5xl": 48,
     "6xl": 64,
