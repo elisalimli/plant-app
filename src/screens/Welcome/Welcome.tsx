@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { theme } from "../../../theme";
 import Button from "../../components/Button";
+import { Space } from "../../components/Space";
 import Typography from "../../components/Typography";
 import Illustrations from "./Illustrations";
 import Steps from "./Steps";
@@ -13,7 +14,7 @@ const Welcome: React.FC = ({}) => {
         <Typography size="3xl" fontWeight="bold">
           Your Home.
           <Typography size="3xl" fontWeight="bold" color="primary">
-            {" "}
+            <Space />
             Greener
           </Typography>
         </Typography>
