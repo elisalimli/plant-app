@@ -1,13 +1,17 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { theme } from "../../../theme";
-import Button from "../../components/Button";
-import { Space } from "../../components/Space";
-import Typography from "../../components/Typography";
-import Illustrations from "./Illustrations";
-import Steps from "./Steps";
+import { theme } from "../../theme";
+import Button from "../components/ui/Button";
+import { Space } from "../components/ui/Space";
+import Typography from "../components/ui/Typography";
+import Illustrations from "../components/Welcome/Illustrations";
+import Steps from "../components/Welcome/Steps";
+import TermsService from "../components/Welcome/TermsService";
+import { useWelcomeScreenStore } from "../stores/useWelcomeScreenStore";
 
 const Welcome: React.FC = () => {
+  const { setShowTermsService } = useWelcomeScreenStore();
+
   return (
     <View style={styles.container}>
       <View style={styles.section1}>
@@ -33,11 +37,7 @@ const Welcome: React.FC = () => {
         <Button type="shadow" extraStyle={{ marginBottom: theme.spacing[2] }}>
           <Typography color="black">Sign up</Typography>
         </Button>
-        <Button>
-          <Typography size="sm" color="gray">
-            Terms of service
-          </Typography>
-        </Button>
+        <TermsService />
       </View>
     </View>
   );

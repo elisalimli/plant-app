@@ -1,9 +1,10 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
+import { TouchableOpacityProps } from "react-native";
 import { StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native";
-import { theme } from "../../theme";
-import { Style } from "../types";
+import { theme } from "../../../theme";
+import { Style } from "../../types";
 
 type ButtonTypes = {
   gradient?: boolean;
@@ -11,17 +12,18 @@ type ButtonTypes = {
   primary?: boolean;
 };
 
-interface ButtonProps {
+type ButtonProps = {
   width?: string | number;
   type?: keyof ButtonTypes;
   extraStyle?: Style;
-}
+} & TouchableOpacityProps;
 
 const Button: React.FC<ButtonProps> = ({
   type,
   width,
   extraStyle = {},
   children,
+  ...props
 }) => {
   const buttonStyles = [
     { width: width || "75%" },
@@ -32,7 +34,7 @@ const Button: React.FC<ButtonProps> = ({
 
   if (type === "gradient") {
     return (
-      <TouchableOpacity style={buttonStyles}>
+      <TouchableOpacity style={buttonStyles} {...props}>
         <LinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
@@ -47,7 +49,7 @@ const Button: React.FC<ButtonProps> = ({
   }
 
   return (
-    <TouchableOpacity style={[buttonStyles, styles.general]}>
+    <TouchableOpacity style={[buttonStyles, styles.general]} {...props}>
       {children}
     </TouchableOpacity>
   );

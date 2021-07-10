@@ -2,11 +2,14 @@ import { Animated, Dimensions } from "react-native";
 import create from "zustand";
 import { combine } from "zustand/middleware";
 
-export const useStepsStore = create(
+export const useWelcomeScreenStore = create(
   combine(
     {
       scrollX: new Animated.Value(0),
+      showTermsService: false,
     },
-    (set) => ({})
+    (set) => ({
+      setShowTermsService: (value: boolean) => set({ showTermsService: value }),
+    })
   )
 );

@@ -1,6 +1,6 @@
 import React from "react";
 import { Animated, Dimensions, FlatList, Image } from "react-native";
-import { useStepsStore } from "../../stores/useStepsStore";
+import { useWelcomeScreenStore } from "../../stores/useWelcomeScreenStore";
 
 interface IllustrationParam {
   id: number;
@@ -14,7 +14,7 @@ interface IllustrationsProps {
 export const { width, height } = Dimensions.get("window");
 
 const Illustrations: React.FC<IllustrationsProps> = ({ illustrations }) => {
-  const { scrollX } = useStepsStore();
+  const { scrollX } = useWelcomeScreenStore();
 
   return (
     <FlatList

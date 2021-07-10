@@ -1,11 +1,11 @@
 import React from "react";
 import { Animated, StyleSheet, View } from "react-native";
 import { theme } from "../../../theme";
-import { useStepsStore } from "../../stores/useStepsStore";
+import { useWelcomeScreenStore } from "../../stores/useWelcomeScreenStore";
 import { illustrations, width } from "./Illustrations";
 
 const Steps = () => {
-  const { scrollX } = useStepsStore();
+  const { scrollX } = useWelcomeScreenStore();
 
   const stepPosition = Animated.divide(scrollX, width);
 
@@ -15,8 +15,6 @@ const Steps = () => {
         const inputRange = [i - 1, i, i + 1];
         const outputRange = [0.4, 1, 0.4];
 
-        console.log("i", i);
-        console.log("inputRange", inputRange, outputRange);
         const opacity = stepPosition.interpolate({
           // i = 3;
           // inputRange:  [2, 3,4],
@@ -27,7 +25,6 @@ const Steps = () => {
           extrapolate: "clamp",
         });
 
-        console.log("opacity", opacity);
         return (
           <Animated.View
             key={`step-${i}`}

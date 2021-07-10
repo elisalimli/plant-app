@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleProp, Text, TextStyle } from "react-native";
-import { theme } from "../../theme";
+import { theme } from "../../../theme";
 
 type FontWeightProps = keyof typeof theme.fontWeight;
 

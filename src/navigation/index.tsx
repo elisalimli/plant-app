@@ -4,8 +4,8 @@ import AppTabs from "../stacks/AppTabs";
 import AuthStack from "../stacks/AuthStack";
 
 const Navigation = () => {
-  // here will change
-  const user = true;
+  // @todo here will change
+  const user = false;
   return (
     <NavigationContainer>
       {user ? <AppTabs /> : <AuthStack />}

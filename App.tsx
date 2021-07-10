@@ -1,3 +1,4 @@
+import { useFonts } from "expo-font";
 import React from "react";
 import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -52,6 +53,16 @@ const App = () => {
   //     />
   //   );
   // }
+
+  const [loaded] = useFonts({
+    RobotoBold: require("./assets/fonts/Roboto-Bold.ttf"),
+    RobotoRegular: require("./assets/fonts/Roboto-Regular.ttf"),
+    RobotoLight: require("./assets/fonts/Roboto-Light.ttf"),
+  });
+
+  if (!loaded) {
+    return null;
+  }
 
   return (
     <SafeAreaView style={{ flex: theme.flex[1] }}>
