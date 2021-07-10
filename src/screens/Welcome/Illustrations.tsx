@@ -60,6 +60,14 @@ export const illustrations = [
     id: 3,
     source: require("../../../assets/images/illustration_3.png"),
   },
+  {
+    id: 4,
+    source: require("../../../assets/images/illustration_3.png"),
+  },
+  {
+    id: 5,
+    source: require("../../../assets/images/illustration_3.png"),
+  },
 ];
 
 Illustrations.defaultProps = {

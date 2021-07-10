@@ -7,7 +7,7 @@ import Typography from "../../components/Typography";
 import Illustrations from "./Illustrations";
 import Steps from "./Steps";
 
-const Welcome: React.FC = ({}) => {
+const Welcome: React.FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.section1}>
