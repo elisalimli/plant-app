@@ -1,16 +1,8 @@
 export const theme = {
   fontFamily: {
-    sans: [
-      "Inter",
-      "-apple-system",
-      "BlinkMacSystemFont",
-      "Segoe UI",
-      "Roboto",
-      "Helvetica",
-      "Arial",
-      "sans-serif",
-    ],
-    mono: ["Menlo", "Monaco", "Courier New", "monospace"],
+    bold: "RobotoBold",
+    regular: "RobotoRegular",
+    light: "RobotoLight",
   },
   fontSize: {
     tiny: 10,
@@ -117,6 +109,10 @@ export const theme = {
     1: 1,
     2: 2,
     3: 3,
+    4: 4,
+  },
+  leading: {
+    "leading-1": 20,
   },
   boxShadow: {
     sm: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
