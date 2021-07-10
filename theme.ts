@@ -133,5 +133,6 @@ export const theme = {
     // ...theme("spacing"),
     5: 5,
     10: 10,
+    full: 999999,
   },
 };

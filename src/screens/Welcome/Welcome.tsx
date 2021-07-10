@@ -1,63 +1,10 @@
 import React from "react";
-import { FlatList, Image, StyleSheet, Dimensions } from "react-native";
-import { View } from "react-native";
-import { theme } from "../../theme";
-import Button from "../components/Button";
-import Typography from "../components/Typography";
-
-// - [ ] Text Component
-
-interface IllustrationParam {
-  id: number;
-  source: any;
-}
-
-interface IllustrationsProps {
-  illustrations?: IllustrationParam[];
-}
-
-const { width, height } = Dimensions.get("window");
-
-const Illustrations: React.FC<IllustrationsProps> = ({ illustrations }) => (
-  <FlatList
-    horizontal
-    pagingEnabled
-    showsHorizontalScrollIndicator={false}
-    data={illustrations}
-    keyExtractor={(item) => `${item.id}`}
-    renderItem={({ item }) => (
-      <Image
-        source={item.source}
-        resizeMode="contain"
-        style={{ width, height: height / 2 }}
-      />
-    )}
-  />
-);
-
-Illustrations.defaultProps = {
-  illustrations: [
-    {
-      id: 1,
-      source: require("../../assets/images/illustration_1.png"),
-    },
-
-    {
-      id: 2,
-      source: require("../../assets/images/illustration_2.png"),
-    },
-    {
-      id: 3,
-      source: require("../../assets/images/illustration_3.png"),
-    },
-  ],
-};
-
-const Steps = () => (
-  <View>
-    <Typography>* * *</Typography>
-  </View>
-);
+import { StyleSheet, View } from "react-native";
+import { theme } from "../../../theme";
+import Button from "../../components/Button";
+import Typography from "../../components/Typography";
+import Illustrations from "./Illustrations";
+import Steps from "./Steps";
 
 const Welcome: React.FC = ({}) => {
   return (

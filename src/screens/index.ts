@@ -3,7 +3,7 @@ import Explore from "./Explore";
 import Login from "./Login";
 import Product from "./Product";
 import Settings from "./Settings";
-import Welcome from "./Welcome";
+import Welcome from "./Welcome/Welcome";
 import Signup from "./Signup";
 import Forgot from "./Forgot";
 
