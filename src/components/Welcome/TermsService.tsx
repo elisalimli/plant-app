@@ -16,7 +16,7 @@ const TermsService = () => {
           <View style={styles.header}>
             <Typography
               extraStyle={{ fontFamily: theme.fontFamily.light }}
-              size="2xl"
+              size="h2"
               fontWeight="light"
             >
               Terms of Service

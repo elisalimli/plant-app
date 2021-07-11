@@ -16,9 +16,9 @@ const Welcome: React.FC<AuthNavProps<"Welcome">> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.section1}>
-        <Typography size="3xl" fontWeight="bold">
+        <Typography size="h1" fontWeight="bold">
           Your Home.
-          <Typography size="3xl" fontWeight="bold" color="primary">
+          <Typography size="h1" fontWeight="bold" color="primary">
             <Space />
             Greener
           </Typography>
