@@ -1,8 +1,8 @@
-import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import { Forgot, Login, Signup, Welcome } from "../screens";
 import { AuthParamList } from "../types/AuthParamList";
+import NavigationHeader from "./NavigationHeader";
 
 const Stack = createStackNavigator<AuthParamList>();
 
@@ -10,12 +10,7 @@ const AuthStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: {},
-        // headerBackImage: <Image source={} />,
-        // headerBackTitle: null,
-        header: () => null,
-        headerLeftContainerStyle: {},
-        headerRightContainerStyle: {},
+        header: NavigationHeader as any,
       }}
       initialRouteName="Welcome"
     >

@@ -8,8 +8,9 @@ import Illustrations from "../components/Welcome/Illustrations";
 import Steps from "../components/Welcome/Steps";
 import TermsService from "../components/Welcome/TermsService";
 import { useWelcomeScreenStore } from "../stores/useWelcomeScreenStore";
+import { AuthNavProps } from "../types/AuthParamList";
 
-const Welcome: React.FC = () => {
+const Welcome: React.FC<AuthNavProps<"Welcome">> = ({ navigation }) => {
   const { setShowTermsService } = useWelcomeScreenStore();
 
   return (
@@ -29,7 +30,11 @@ const Welcome: React.FC = () => {
         <Steps />
       </View>
       <View style={styles.section3}>
-        <Button extraStyle={{ marginBottom: theme.spacing[3] }} type="gradient">
+        <Button
+          onPress={() => navigation.push("Login")}
+          extraStyle={{ marginBottom: theme.spacing[3] }}
+          type="gradient"
+        >
           <Typography color="white" fontWeight="bold">
             Login
           </Typography>
