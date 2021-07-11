@@ -12,7 +12,7 @@ const AuthStack = () => {
       screenOptions={{
         header: NavigationHeader as any,
       }}
-      initialRouteName="Welcome"
+      initialRouteName="Login"
     >
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Login" component={Login} />

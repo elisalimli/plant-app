@@ -1,6 +1,7 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { TouchableOpacityProps } from "react-native";
+import { useMemo } from "react";
+import { TouchableOpacityProps, View } from "react-native";
 import { StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { theme } from "../../../theme";
@@ -16,24 +17,35 @@ type ButtonProps = {
   width?: string | number;
   type?: keyof ButtonTypes;
   extraStyle?: Style;
+  extraContainerStyle?: Style;
+  center?: boolean;
 } & TouchableOpacityProps;
 
 const Button: React.FC<ButtonProps> = ({
   type,
   width,
   extraStyle = {},
+  extraContainerStyle = {},
+  center = false,
   children,
   ...props
 }) => {
-  const buttonStyles = [
-    { width: width || "75%" },
-    extraStyle,
-    type === "primary" && styles.primary,
-    type === "shadow" && styles.shadow,
-  ];
+  const buttonStyles = useMemo(
+    () => [
+      { width: width || "75%" },
+      extraStyle,
+      type === "primary" && styles.primary,
+      type === "shadow" && styles.shadow,
+    ],
+    []
+  );
+
+  const containerStyles = useMemo(() => [center && styles.center], []);
+
+  let main;
 
   if (type === "gradient") {
-    return (
+    main = (
       <TouchableOpacity style={buttonStyles} {...props}>
         <LinearGradient
           start={{ x: 0, y: 0 }}
@@ -46,13 +58,15 @@ const Button: React.FC<ButtonProps> = ({
         </LinearGradient>
       </TouchableOpacity>
     );
+  } else {
+    main = (
+      <TouchableOpacity style={[buttonStyles, styles.general]} {...props}>
+        {children}
+      </TouchableOpacity>
+    );
   }
 
-  return (
-    <TouchableOpacity style={[buttonStyles, styles.general]} {...props}>
-      {children}
-    </TouchableOpacity>
-  );
+  return <View style={[containerStyles, extraContainerStyle]}>{main}</View>;
 };
 
 const styles = StyleSheet.create({
@@ -76,13 +90,10 @@ const styles = StyleSheet.create({
     shadowRadius: 1.0,
 
     elevation: 0.45,
-    // shadowColor: "#000",
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 3,
-    // },
-    // shadowOpacity: 0.27,
-    // shadowRadius: 4.65,
+  },
+  center: {
+    flexDirection: "row",
+    justifyContent: "center",
   },
 });
 
